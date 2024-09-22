@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (lastModifiedSpan) {
         lastModifiedSpan.textContent = new Date(document.lastModified).toLocaleString();
     }
+
 });
 
 function toggleMenu() {

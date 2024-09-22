@@ -1,4 +1,3 @@
-/* Resetação básica */
 * {
     margin: 0;
     padding: 0;
@@ -97,16 +96,38 @@ main {
     align-items: center;
 }
 
-.course-work,
-.location,
-.certificate {
+.location {
     margin-bottom: 20px;
     width: 100%;
 }
 
-.course-work h2,
-.location h2,
+.certificate {
+    grid-template-columns: 1/3;
+    grid-column: 1/3;
+    text-align: center;
+}
+
 .certificate h2 {
+    background-color: #0b5c7a;
+    color: white;
+    padding: 10px;
+    padding-left: 300px;
+    padding-right: 300px;
+
+    text-align: center;
+}
+
+.course-work {
+    margin-bottom: 420px;
+}
+
+.course-work li {
+    margin-left: 60px;
+    margin-top: 25px;
+}
+
+.course-work h2,
+.location h2 {
     background-color: #0b5c7a;
     color: white;
     padding: 10px;
@@ -114,8 +135,8 @@ main {
 }
 
 .location img {
-    width: 100%;
-    height: auto;
+    width: 500px;
+    height: 500px;
     margin-bottom: 10px;
 }
 
@@ -166,7 +187,6 @@ footer p {
     margin: 5px;
 }
 
-/* Estilos responsivos para Mobile */
 @media (max-width: 768px) {
     .desktop-menu {
         display: none;
@@ -198,7 +218,6 @@ footer p {
     }
 }
 
-/* Estilos para Desktop */
 @media (min-width: 769px) {
     .mobile-menu {
         display: none;
