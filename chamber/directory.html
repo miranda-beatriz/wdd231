@@ -5,21 +5,18 @@
     <meta charset="UTF-8">
     <meta name="author" content="Beatriz Miranda">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="We are a local organization that unites businesses to collaboratively enhance and promote the interests of our community.">
+    <meta name="description" content="We are a local organization that unites businesses to collaboratively enhance and promote the interests of our community.">
     <title>Business Alliance- Mogi Das Cruzes</title>
     <link rel="stylesheet" href="styles/directory.css">
     <script src="scripts/directory.js" defer></script>
     <link rel="icon" href="Chamber.ico">
     <meta property="og:title" content="Business Alliance" />
     <meta property="og:type" content="website">
-    <meta property="og:image"
-        content="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true" />
+    <meta property="og:image" content="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true" />
     <meta property="og:url" content="https://miranda-beatriz.github.io/wdd231/chamber/directory" />
     <meta name="twitter:title" content="Business Alliance ">
     <meta name="twitter:description" content="Bringing local businesses together to inspire collaboration.">
-    <meta name="twitter:image"
-        content="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true">
+    <meta name="twitter:image" content="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -39,8 +36,6 @@
                     </ul>
                     <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
                     <ul class="mobile-menu">
-
-
                         <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/directory">Home</a></li>
                         <li><a href="#">Directory</a></li>
                         <li><a href="#">Join</a></li>
@@ -55,8 +50,7 @@
 
     <section class="hero">
         <div class="hero-image">
-            <img src="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true"
-                alt="Mogi das Cruzes Image">
+            <img src="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true" alt="Mogi das Cruzes Image">
             <button class="button">Learn More</button>
         </div>
     </section>
@@ -97,29 +91,7 @@
             </div>
         </div>
 
-        <div class="businesses" id="businesses-container">
-            <div class="business-card">
-                <h3>Business Name</h3>
-                <p>Business Tag Line</p>
-                <p>Email: info@gmail.com</p>
-                <p>Phone: 800-555-1234</p>
-                <p>URL: <a href="#">mybusiness.com</a></p>
-            </div>
-            <div class="business-card">
-                <h3>Business Name</h3>
-                <p>Business Tag Line</p>
-                <p>Email: info@gmail.com</p>
-                <p>Phone: 800-555-1234</p>
-                <p>URL: <a href="#">mybusiness.com</a></p>
-            </div>
-            <div class="business-card">
-                <h3>Business Name</h3>
-                <p>Business Tag Line</p>
-                <p>Email: info@gmail.com</p>
-                <p>Phone: 800-555-1234</p>
-                <p>URL: <a href="#">mybusiness.com</a></p>
-            </div>
-        </div>
+        <div class="businesses" id="businesses-container"></div>
     </section>
 
     <footer>
@@ -135,11 +107,42 @@
             <a href="https://linkedin.com/"><img src="images/linkedin-logo.webp" alt="LinkedIn"></a>
         </div>
         <div class="footer-credits">
-            <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span class="location">Brasil</span>
-            </p>
+            <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span class="location">Brasil</span></p>
             <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
         </div>
     </footer>
+
+    <script>
+        async function loadBusinesses() {
+            try {
+                const response = await fetch('data/members.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const businesses = await response.json();
+                const container = document.getElementById('businesses-container');
+                container.innerHTML = ''; // Limpa o conteúdo existente
+    
+                businesses.forEach(business => {
+                    const card = document.createElement('div');
+                    card.classList.add('business-card');
+                    card.innerHTML = `
+                        <h3>${business.name}</h3>
+                        <p>Address: ${business.address}</p>
+                        <p>Phone: ${business.phone}</p>
+                        <p>Website: <a href="${business.website}" target="_blank">${business.website}</a></p>
+                        <img src="${business.image}" alt="${business.name} logo" style="width:100px;height:auto;">
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading businesses:', error);
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', loadBusinesses);
+    </script>
+   
 </body>
 
 </html>
