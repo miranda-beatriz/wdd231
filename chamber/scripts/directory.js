@@ -13,56 +13,64 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-// Carrega dados dos membros usando fetch e async/await
-document.addEventListener('DOMContentLoaded', async () => {
-    const container = document.getElementById('businesses-container');
-    const toggleButton = document.getElementById('toggleViewButton');
-    let isListView = false;
-
-    // Função para buscar e exibir dados
-    async function loadMembers() {
-        try {
-            const response = await fetch('members.json'); // Ajuste para o caminho correto do seu JSON
-            const members = await response.json();
-            displayMembers(members);
-        } catch (error) {
-            console.error('Erro ao carregar os membros:', error);
-            container.innerHTML = '<p>Erro ao carregar os membros.</p>';
+async function fetchMembers() {
+    try {
+        const response = await fetch('chamber\data\members.json'); // Certifique-se de que o caminho está correto
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const members = await response.json();
+        displayMembers(members);
+    } catch (error) {
+        console.error('Error fetching members:', error);
     }
+}
 
-    // Função para exibir membros no HTML
-    function displayMembers(members) {
-        container.innerHTML = members.map(member => `
-            <div class="business-card">
-                <h3>${member.name}</h3>
-                <p>${member.tagline}</p>
-                <p>Email: <a href="mailto:${member.email}">${member.email}</a></p>
-                <p>Phone: ${member.phone}</p>
-                <p>URL: <a href="${member.url}" target="_blank">${member.url}</a></p>
-            </div>
-        `).join('');
-    }
+function displayMembers(members) {
+    const container = document.getElementById('businesses-container');
+    container.innerHTML = ''; // Limpa o container antes de adicionar novos membros
 
-    // Alterna a visualização entre lista e grade
-    toggleButton.addEventListener('click', () => {
-        isListView = !isListView;
-        container.classList.toggle('list-view', isListView);
-        container.classList.toggle('grid-view', !isListView);
+    members.forEach(member => {
+        const card = document.createElement('div');
+        card.classList.add('business-card');
+        card.innerHTML = `
+            <img src="${member.image}" alt="${member.name} logo" class="business-logo" />
+            <h3>${member.name}</h3>
+            <p>Address: ${member.address}</p>
+            <p>Phone: ${member.phone}</p>
+            <p>Website: <a href="${member.website}" target="_blank">${member.website}</a></p>
+            <p>Industry: ${member.additional_info.industry}</p>
+            <p>Founded: ${member.additional_info.founded}</p>
+            <p>Employees: ${member.additional_info.employees}</p>
+        `;
+        container.appendChild(card);
     });
+}
 
-    // Carrega os membros no início
-    await loadMembers();
-});
-document.addEventListener('DOMContentLoaded', function () {
-    // Exibe o ano atual no rodapé
-    let yearSpan = document.getElementById('currentyear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+// Chama a função para buscar membros ao carregar a página
+document.addEventListener("DOMContentLoaded", fetchMembers);
 
-    // Exibe a data de última modificação no rodapé
-    let lastModifiedSpan = document.getElementById('last-modified');
-    if (lastModifiedSpan) {
-        lastModifiedSpan.textContent = new Date(document.lastModified).toLocaleString();
+
+function toggleView(viewType) {
+    const container = document.getElementById('businesses-container');
+    if (viewType === 'grid') {
+        container.classList.add('grid');
+        container.classList.remove('list');
+    } else {
+        container.classList.add('list');
+        container.classList.remove('grid');
     }
+}
+
+document.getElementById('grid-view').addEventListener('click', () => toggleView('grid'));
+document.getElementById('list-view').addEventListener('click', () => toggleView('list'));
+
+// Exibir o ano de copyright e a data da última modificação
+const currentYear = new Date().getFullYear();
+document.getElementById('currentyear').textContent = currentYear;
+
+const lastModified = document.lastModified;
+document.getElementById('last-modified').textContent = lastModified;
+
+// Chama a função para buscar membros ao carregar a página
+document.addEventListener("DOMContentLoaded", fetchMembers);

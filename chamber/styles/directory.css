@@ -344,6 +344,20 @@ footer a:hover {
     pointer-events: none;
 }
 
+.businesses.grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.businesses.list {
+    display: block;
+}
+
+.business-card.list {
+    margin-bottom: 15px;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
