@@ -2,8 +2,18 @@ function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
     mobileMenu.classList.toggle('open');
 }
-// Adiciona a classe 'active' no item de menu da página atual
 document.addEventListener("DOMContentLoaded", function () {
+    let yearSpan = document.getElementById('currentyear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    let lastModifiedSpan = document.getElementById('last-modified');
+    if (lastModifiedSpan) {
+        const now = new Date();
+        lastModifiedSpan.textContent = now.toLocaleString();
+    }
+
     const currentPath = window.location.pathname;
     const menuItems = document.querySelectorAll('nav ul li a');
 
@@ -13,9 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 async function fetchMembers() {
     try {
-        const response = await fetch('chamber\data\members.json'); // Certifique-se de que o caminho está correto
+        const response = await fetch('chamber\data\members.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -28,7 +39,7 @@ async function fetchMembers() {
 
 function displayMembers(members) {
     const container = document.getElementById('businesses-container');
-    container.innerHTML = ''; // Limpa o container antes de adicionar novos membros
+    container.innerHTML = '';
 
     members.forEach(member => {
         const card = document.createElement('div');
@@ -47,9 +58,36 @@ function displayMembers(members) {
     });
 }
 
-// Chama a função para buscar membros ao carregar a página
 document.addEventListener("DOMContentLoaded", fetchMembers);
 
+async function loadBusinesses() {
+    try {
+        const response = await fetch('data/members.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const businesses = await response.json();
+        const container = document.getElementById('businesses-container');
+        container.innerHTML = '';
+
+        businesses.forEach(business => {
+            const card = document.createElement('div');
+            card.classList.add('business-card');
+            card.innerHTML = `
+                <h3>${business.name}</h3>
+                <p>Address: ${business.address}</p>
+                <p>Phone: ${business.phone}</p>
+                <p>Website: <a href="${business.website}" target="_blank">${business.website}</a></p>
+                <img src="${business.image}" alt="${business.name} logo" style="width:100px;height:auto;">
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Error loading businesses:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadBusinesses);
 
 function toggleView(viewType) {
     const container = document.getElementById('businesses-container');
@@ -65,12 +103,4 @@ function toggleView(viewType) {
 document.getElementById('grid-view').addEventListener('click', () => toggleView('grid'));
 document.getElementById('list-view').addEventListener('click', () => toggleView('list'));
 
-// Exibir o ano de copyright e a data da última modificação
-const currentYear = new Date().getFullYear();
-document.getElementById('currentyear').textContent = currentYear;
-
-const lastModified = document.lastModified;
-document.getElementById('last-modified').textContent = lastModified;
-
-// Chama a função para buscar membros ao carregar a página
 document.addEventListener("DOMContentLoaded", fetchMembers);
