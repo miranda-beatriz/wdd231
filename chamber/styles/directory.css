@@ -1,4 +1,3 @@
-/* Configurações Globais */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +8,6 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f9f9f9;
-    /* Cor de fundo suave */
 }
 
 a {
@@ -17,21 +15,14 @@ a {
     color: black;
 }
 
-/* Cores Personalizadas */
 :root {
     --blue-purple: #4B0082;
-    /* Azul puxado para o roxo (Índigo) */
     --gold-yellow: #DAA520;
-    /* Amarelo puxado para o dourado (Goldenrod) */
     --light-gray: #f5f5f5;
-    /* Cinza claro */
     --dark-gray: #333;
-    /* Cinza escuro para textos */
     --border-color: #ddd;
-    /* Cor de borda neutra */
 }
 
-/* Estilo do Cabeçalho */
 header {
     background-color: var(--blue-purple);
     padding: 10px 20px;
@@ -60,7 +51,6 @@ nav ul li a:hover {
     color: var(--gold-yellow);
 }
 
-/* Hero Image */
 .hero {
     background-color: var(--light-gray);
     padding: 20px 20px;
@@ -83,7 +73,6 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
-/* Ajustes para o botão */
 .hero .button {
     position: absolute;
     top: 80%;
@@ -102,7 +91,7 @@ nav ul li a:hover {
     color: white;
 }
 
-/* Seção Principal */
+
 .main-section {
     padding: 40px 20px;
     background-color: white;
@@ -117,33 +106,26 @@ nav ul li a:hover {
     padding-bottom: 10px;
 }
 
-/* Estilo da seção de eventos e clima */
 .home-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Cria 3 colunas de tamanhos iguais */
     gap: 20px;
-    /* Espaçamento entre as colunas */
     padding: 20px 0;
     background-color: var(--light-gray);
     border-radius: 8px;
     margin-bottom: 40px;
 }
 
-/* Estilo da seção de eventos e clima */
 .home-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Cria 3 colunas de tamanhos iguais */
     gap: 20px;
-    /* Espaçamento entre as colunas */
     padding: 20px 0;
     background-color: var(--light-gray);
     border-radius: 8px;
     margin-bottom: 40px;
 }
 
-/* Estilo para Eventos */
 .events {
     padding: 20px;
     background-color: white;
@@ -151,9 +133,7 @@ nav ul li a:hover {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    /* Muda para coluna para organizar o conteúdo */
     align-items: flex-start;
-    /* Alinha o conteúdo à esquerda */
 }
 
 .events h2 {
@@ -172,7 +152,6 @@ nav ul li a:hover {
     margin-top: 15px;
 }
 
-/* Estilo para o Clima Atual */
 .current-weather {
     padding: 20px;
     background-color: white;
@@ -199,7 +178,6 @@ nav ul li a:hover {
     margin-top: 15px;
 }
 
-/* Estilo para Previsão do Tempo */
 .weather-forecast {
     padding: 20px;
     background-color: white;
@@ -226,8 +204,6 @@ nav ul li a:hover {
     margin-top: 15px;
 }
 
-
-/* Cartões de Negócios */
 .businesses {
     display: flex;
     justify-content: space-between;
@@ -266,7 +242,6 @@ nav ul li a:hover {
     color: var(--blue-purple);
 }
 
-/* Rodapé */
 footer {
     background-color: var(--blue-purple);
     padding: 20px;
@@ -304,7 +279,6 @@ footer a:hover {
     display: none;
 }
 
-/* Estilo base para o breadcrumb */
 .breadcrumb {
     display: flex;
     list-style: none;
@@ -359,10 +333,8 @@ footer a:hover {
 }
 
 
-/* Responsividade */
 @media (max-width: 768px) {
 
-    /* Mostra o ícone do menu no mobile */
     .mobile-menu-icon {
         display: block;
         font-size: 24px;
@@ -370,12 +342,10 @@ footer a:hover {
         cursor: pointer;
     }
 
-    /* Esconde o menu desktop no mobile */
     .desktop-menu {
         display: none;
     }
 
-    /* Mostra o menu mobile quando o ícone é clicado */
     .mobile-menu {
         display: none;
         flex-direction: column;
@@ -392,7 +362,6 @@ footer a:hover {
         display: flex;
     }
 
-    /* Outros ajustes de responsividade... */
     .home-section {
         grid-template-columns: 1fr;
         gap: 20px;
