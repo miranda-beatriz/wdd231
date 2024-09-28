@@ -402,18 +402,7 @@ footer a:hover {
     }
 }
 
-/* Responsividade: Ajuste do tamanho do breadcrumb para mobile */
-@media (max-width: 768px) {
-    .breadcrumb {
-        flex-wrap: wrap;
-        font-size: 12px;
-    }
-
-    .breadcrumb li {
-        margin-right: 5px;
-    }
-
-    .breadcrumb li::after {
-        margin-left: 5px;
-    }
+.breadcrumbs {
+    font-size: 12px;
+    padding: 8px 15px;
 }

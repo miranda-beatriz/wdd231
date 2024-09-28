@@ -1,0 +1,93 @@
+[
+    {
+        "name": "MogiSoft Development",
+        "address": "Avenida Prefeito Carlos Ferreira Lopes, 123, Mogi das Cruzes, SP",
+        "phone": "+55 11 4723-1122",
+        "website": "https://www.mogisoft.com.br",
+        "image": "mogisoft_logo.png",
+        "membership_level": 3,
+        "additional_info": {
+            "industry": "Information Technology",
+            "founded": "2015",
+            "employees": 75
+        }
+    },
+    {
+        "name": "AgroMogi Organic Products",
+        "address": "Estrada do Nagao, 456, Mogi das Cruzes, SP",
+        "phone": "+55 11 4798-3344",
+        "website": "https://www.agromogi.com.br",
+        "image": "agromogi_logo.jpg",
+        "membership_level": 2,
+        "additional_info": {
+            "industry": "Agribusiness",
+            "founded": "2010",
+            "employees": 50
+        }
+    },
+    {
+        "name": "Life Full Clinic",
+        "address": "Rua Doutor Deodato Wertheimer, 789, Mogi das Cruzes, SP",
+        "phone": "+55 11 4721-9988",
+        "website": "https://www.lifefullclinic.com.br",
+        "image": "life_full_logo.svg",
+        "membership_level": 3,
+        "additional_info": {
+            "industry": "Healthcare",
+            "founded": "1998",
+            "employees": 120
+        }
+    },
+    {
+        "name": "Horizonte Construction",
+        "address": "Avenida Voluntário Fernando Pinheiro Franco, 321, Mogi das Cruzes, SP",
+        "phone": "+55 11 4791-5566",
+        "website": "https://www.horizonteconstruction.com.br",
+        "image": "horizonte_logo.png",
+        "membership_level": 2,
+        "additional_info": {
+            "industry": "Civil Engineering",
+            "founded": "2006",
+            "employees": 200
+        }
+    },
+    {
+        "name": "MogiCred Finance",
+        "address": "Rua Presidente Rodrigues Alves, 654, Mogi das Cruzes, SP",
+        "phone": "+55 11 4798-2211",
+        "website": "https://www.mogicred.com.br",
+        "image": "mogicred_logo.svg",
+        "membership_level": 1,
+        "additional_info": {
+            "industry": "Financial Services",
+            "founded": "2018",
+            "employees": 35
+        }
+    },
+    {
+        "name": "Energiza Sustainable Solutions",
+        "address": "Rua Coronel Cardoso de Siqueira, 987, Mogi das Cruzes, SP",
+        "phone": "+55 11 4722-4455",
+        "website": "https://www.energizasustainable.com.br",
+        "image": "energiza_logo.jpg",
+        "membership_level": 1,
+        "additional_info": {
+            "industry": "Renewable Energy",
+            "founded": "2012",
+            "employees": 60
+        }
+    },
+    {
+        "name": "Comunicativa Marketing",
+        "address": "Rua José Bonifácio, 111, Mogi das Cruzes, SP",
+        "phone": "+55 11 4724-7788",
+        "website": "https://www.comunicativa.com.br",
+        "image": "comunicativa_logo.png",
+        "membership_level": 3,
+        "additional_info": {
+            "industry": "Marketing and Advertising",
+            "founded": "2002",
+            "employees": 150
+        }
+    }
+]

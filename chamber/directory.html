@@ -19,9 +19,8 @@
     <meta name="twitter:title" content="Business Alliance ">
     <meta name="twitter:description" content="Bringing local businesses together to inspire collaboration.">
     <meta name="twitter:image"
-        content=" https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true">
+        content="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true">
     <meta name="twitter:card" content="summary_large_image">
-
 </head>
 
 <body>
@@ -49,8 +48,8 @@
                 </nav>
             </ul>
         </nav>
-
     </header>
+
     <section class="hero">
         <div class="hero-image">
             <img src="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true"
@@ -65,7 +64,6 @@
             <div class="events section">
                 <h2>Events</h2>
                 <div class="event-content">
-                    <!-- Adicione o conteúdo do evento aqui -->
                     <p>Upcoming community events...</p>
                 </div>
             </div>
@@ -92,7 +90,7 @@
             </div>
         </div>
 
-        <div class="businesses">
+        <div class="businesses" id="businesses-container">
             <div class="business-card">
                 <h3>Business Name</h3>
                 <p>Business Tag Line</p>
@@ -130,9 +128,9 @@
             <a href="https://linkedin.com/"><img src="images/linkedin-logo.webp" alt="LinkedIn"></a>
         </div>
         <div class="footer-credits">
-            <p>WDD231 Class Project</p>
-            <p>Marie Martínez</p>
-            <p>Last Modification: 10/21/202X 22:12:35</p>
+            <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span class="location">Brasil</span>
+            </p>
+            <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
         </div>
     </footer>
 </body>
