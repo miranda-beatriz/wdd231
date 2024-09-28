@@ -1,0 +1,419 @@
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    /* Cor de fundo suave */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Cores Personalizadas */
+:root {
+    --blue-purple: #4B0082;
+    /* Azul puxado para o roxo (Índigo) */
+    --gold-yellow: #DAA520;
+    /* Amarelo puxado para o dourado (Goldenrod) */
+    --light-gray: #f5f5f5;
+    /* Cinza claro */
+    --dark-gray: #333;
+    /* Cinza escuro para textos */
+    --border-color: #ddd;
+    /* Cor de borda neutra */
+}
+
+/* Estilo do Cabeçalho */
+header {
+    background-color: var(--blue-purple);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    max-width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+nav ul li a:hover {
+    color: var(--gold-yellow);
+}
+
+/* Hero Image */
+.hero {
+    background-color: var(--light-gray);
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.hero-image {
+    position: relative;
+    border: 2px dashed var(--border-color);
+    padding: 30px;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Ajustes para o botão */
+.hero .button {
+    position: absolute;
+    top: 80%;
+    right: 10%;
+    padding: 10px 20px;
+    background-color: var(--gold-yellow);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero .button:hover {
+    background-color: var(--blue-purple);
+    color: white;
+}
+
+/* Seção Principal */
+.main-section {
+    padding: 40px 20px;
+    background-color: white;
+}
+
+.main-section h1 {
+    font-size: 32px;
+    color: var(--blue-purple);
+    margin-bottom: 30px;
+    text-align: left;
+    border-bottom: 3px solid var(--gold-yellow);
+    padding-bottom: 10px;
+}
+
+/* Estilo da seção de eventos e clima */
+.home-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Cria 3 colunas de tamanhos iguais */
+    gap: 20px;
+    /* Espaçamento entre as colunas */
+    padding: 20px 0;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+/* Estilo da seção de eventos e clima */
+.home-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Cria 3 colunas de tamanhos iguais */
+    gap: 20px;
+    /* Espaçamento entre as colunas */
+    padding: 20px 0;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para Eventos */
+.events {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    /* Muda para coluna para organizar o conteúdo */
+    align-items: flex-start;
+    /* Alinha o conteúdo à esquerda */
+}
+
+.events h2 {
+    background-color: var(--blue-purple);
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.events p {
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-top: 15px;
+}
+
+/* Estilo para o Clima Atual */
+.current-weather {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.current-weather h2 {
+    background-color: var(--blue-purple);
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.current-weather p {
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-top: 15px;
+}
+
+/* Estilo para Previsão do Tempo */
+.weather-forecast {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.weather-forecast h2 {
+    background-color: var(--blue-purple);
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.weather-forecast p {
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-top: 15px;
+}
+
+
+/* Cartões de Negócios */
+.businesses {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+.business-card {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--light-gray);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.business-card h3 {
+    font-size: 24px;
+    color: var(--blue-purple);
+    margin-bottom: 10px;
+}
+
+.business-card p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.business-card a {
+    color: var(--gold-yellow);
+}
+
+.business-card a:hover {
+    text-decoration: underline;
+    color: var(--blue-purple);
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--blue-purple);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: white;
+}
+
+footer .footer-info,
+footer .footer-credits {
+    font-size: 14px;
+}
+
+footer .footer-social img {
+    width: 55px;
+    margin: 0 10px;
+}
+
+footer a {
+    color: var(--gold-yellow);
+}
+
+footer a:hover {
+    color: white;
+}
+
+.desktop-menu {
+    display: flex;
+}
+
+.mobile-menu,
+.mobile-menu-icon {
+    display: none;
+}
+
+/* Estilo base para o breadcrumb */
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.breadcrumb li {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.breadcrumb li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.breadcrumb li a:hover {
+    color: #0056b3;
+}
+
+.breadcrumb li::after {
+    content: '>';
+    margin-left: 10px;
+    color: #6c757d;
+}
+
+.breadcrumb li:last-child::after {
+    content: '';
+    margin-left: 0;
+}
+
+.breadcrumb li:last-child {
+    color: #6c757d;
+    pointer-events: none;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+    /* Mostra o ícone do menu no mobile */
+    .mobile-menu-icon {
+        display: block;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* Esconde o menu desktop no mobile */
+    .desktop-menu {
+        display: none;
+    }
+
+    /* Mostra o menu mobile quando o ícone é clicado */
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background-color: var(--blue-purple);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .mobile-menu.open {
+        display: flex;
+    }
+
+    /* Outros ajustes de responsividade... */
+    .home-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .businesses {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .events,
+    .current-weather,
+    .weather-forecast,
+    .business-card {
+        width: 100%;
+    }
+
+    .hero .button {
+        right: 5%;
+        top: 40%;
+    }
+}
+
+/* Responsividade: Ajuste do tamanho do breadcrumb para mobile */
+@media (max-width: 768px) {
+    .breadcrumb {
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+
+    .breadcrumb li {
+        margin-right: 5px;
+    }
+
+    .breadcrumb li::after {
+        margin-left: 5px;
+    }
+}
