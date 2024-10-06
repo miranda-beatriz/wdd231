@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             forecastContent.innerHTML = '';
 
             // Start from the second day (skip the current day)
-            for (let i = 8; i < 32; i += 8) { // Start from index 8 (next day), increment by 8 for each day
+            for (let i = 7; i < 32; i += 8) { // Start from index 8 (next day), increment by 8 for each day
                 const forecastDay = data.list[i];
                 const date = new Date(forecastDay.dt * 1000).toLocaleDateString();
                 const temp = forecastDay.main.temp;
@@ -164,45 +164,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Função para carregar membros e exibir os spotlights na página inicial
-async function fetchMembers() {
-    try {
-        const response = await fetch('chamber/data/members.json'); // Verifique se o caminho do arquivo JSON está correto
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const members = await response.json();
-        console.log('Membros carregados:', members); // Debug: verifique se os membros são carregados corretamente
-        displaySpotlights(members); // Chama a função para exibir os spotlights
-        displayMembers(members);    // Chama a função para exibir todos os membros
-    } catch (error) {
-        console.error('Error fetching members:', error);
-    }
-}
-
-// Função para exibir os "spotlights" de empresas com nível Silver (2) ou Gold (3)
 function displaySpotlights(members) {
     // Filtra membros Silver (2) e Gold (3)
     const qualifiedMembers = members.filter(member => member.membership_level === 2 || member.membership_level === 3);
 
-    console.log('Membros qualificados (Silver/Gold):', qualifiedMembers); // Debug: Veja os membros qualificados
-
     // Embaralha e seleciona aleatoriamente 2 ou 3 membros
     const randomMembers = qualifiedMembers.sort(() => 0.5 - Math.random()).slice(0, 3);
-
-    console.log('Membros aleatórios selecionados:', randomMembers); // Debug: veja os membros selecionados
 
     // Seleciona o container de spotlight
     const spotlightContainer = document.querySelector('.spotlight-container');
 
+    // Se o container não existir, retorna com um erro
     if (!spotlightContainer) {
-        console.error('Spotlight container não encontrado!'); // Debug: verificar se o container existe
+        console.error('Spotlight container não encontrado!');
         return;
     }
 
-    spotlightContainer.innerHTML = '';  // Limpa o conteúdo anterior
-
-    // Itera pelos membros selecionados aleatoriamente e insere no HTML
+    // Limpa o conteúdo anterior e adiciona os novos spotlights
+    spotlightContainer.innerHTML = '';
     randomMembers.forEach(member => {
         const card = document.createElement('div');
         card.classList.add('spotlight-card');
@@ -217,6 +196,7 @@ function displaySpotlights(members) {
         spotlightContainer.appendChild(card);
     });
 }
+
 
 // Função para exibir todos os membros na página (você já tinha isso)
 function displayMembers(members) {
