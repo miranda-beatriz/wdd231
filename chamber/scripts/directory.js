@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             forecastContent.innerHTML = '';
 
             // Start from the second day (skip the current day)
-            for (let i = 7; i < 32; i += 8) { // Start from index 8 (next day), increment by 8 for each day
+            for (let i = 8; i < 32; i += 8) { // Start from index 8 (next day), increment by 8 for each day
                 const forecastDay = data.list[i];
                 const date = new Date(forecastDay.dt * 1000).toLocaleDateString();
                 const temp = forecastDay.main.temp;
