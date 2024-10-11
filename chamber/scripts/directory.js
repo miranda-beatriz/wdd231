@@ -212,3 +212,139 @@ function displayMembers(members) {
 }
 
 document.addEventListener("DOMContentLoaded", fetchMembers);
+
+// Function to open modals and manage focus
+document.querySelectorAll('.open-modal').forEach(item => {
+    item.addEventListener('click', function (e) {
+        e.preventDefault();
+        let modalId = this.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block";
+        modal.setAttribute('aria-hidden', 'false');
+        modal.querySelector('.close').focus();  // Focus the close button for accessibility
+    });
+});
+
+// Function to close modals and restore focus to the triggering element
+document.querySelectorAll('.close').forEach(item => {
+    item.addEventListener('click', function () {
+        let modalId = this.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none";
+        modal.setAttribute('aria-hidden', 'true');
+        document.querySelector(`a[data-modal="${modalId}"]`).focus();  // Return focus to the link that triggered the modal
+    });
+});
+
+// Close the modal when clicking outside of the modal content
+window.onclick = function (event) {
+    document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            modal.setAttribute('aria-hidden', 'true');
+        }
+    });
+};
+
+function getQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        firstName: urlParams.get('first-name'),
+        lastName: urlParams.get('last-name'),
+        email: urlParams.get('email'),
+        mobilePhone: urlParams.get('mobile-phone'),
+        organization: urlParams.get('organization'),
+        timestamp: urlParams.get('timestamp')
+    };
+}
+
+// Populate the thank you page with form data
+const formData = getQueryParams();
+document.getElementById('first-name').textContent = formData.firstName || 'N/A';
+document.getElementById('last-name').textContent = formData.lastName || 'N/A';
+document.getElementById('email').textContent = formData.email || 'N/A';
+document.getElementById('mobile-phone').textContent = formData.mobilePhone || 'N/A';
+document.getElementById('organization').textContent = formData.organization || 'N/A';
+document.getElementById('timestamp').textContent = formData.timestamp || 'N/A';
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modalLinks = document.querySelectorAll('.open-modal');
+    const closeButtons = document.querySelectorAll('.close');
+
+    // Function to open a modal
+    modalLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        });
+    });
+
+    // Function to close a modal
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // Close the modal if the user clicks outside the modal content
+    window.addEventListener('click', function (e) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all the "More Info" links
+    const modalLinks = document.querySelectorAll(".open-modal");
+
+    // Get all the modals
+    const modals = document.querySelectorAll(".modal");
+
+    // Get all close buttons
+    const closeButtons = document.querySelectorAll(".close");
+
+    // Function to open the modal
+    modalLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const modalId = this.getAttribute("data-modal");
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "block";
+            }
+        });
+    });
+
+    // Function to close the modal
+    closeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const modalId = this.getAttribute("data-modal");
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+
+    // Close modal if user clicks outside modal content
+    window.addEventListener("click", function (event) {
+        modals.forEach(function (modal) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+});
+

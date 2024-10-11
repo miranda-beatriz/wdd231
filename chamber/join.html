@@ -39,14 +39,14 @@
                 <ul class="desktop-menu">
                     <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/index">Home</a></li>
                     <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/directory">Directory</a></li>
-                    <li><a href="#">Join</a></li>
+                    <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/join">Join</a></li>
                     <li><a href="#">Discover</a></li>
                 </ul>
                 <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
                 <ul class="mobile-menu">
                     <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/index">Home</a></li>
                     <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/directory">Directory</a></li>
-                    <li><a href="#">Join</a></li>
+                    <li><a href="https://miranda-beatriz.github.io/wdd231/chamber/join">Join</a></li>
                     <li><a href="#">Discover</a></li>
                 </ul>
 
@@ -54,47 +54,159 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://github.com/miranda-beatriz/wdd231/blob/main/chamber/images/mogi.jpg?raw=true"
-                alt="Mogi das Cruzes Image">
-            <button class="button" onclick="">Join us</button>
-        </div>
-    </section>
+    <form method="GET" action="thankyou.html">
+        <h1>Membership Application</h1>
 
-    <section class="main-section">
-        <h1>Home</h1>
-        <div class="view-toggle">
-            <button id="grid-view" class="toggle-button">Grid View</button>
-            <button id="list-view" class="toggle-button">List View</button>
-        </div>
-        <div class="home-section">
-            <div class="events section">
-                <h2>Events</h2>
-                <div class="event-content">
-                    <p>Upcoming community events...</p>
-                </div>
-            </div>
-            <div class="current-weather section">
-                <h2>Current Weather</h2>
-                <div class="weather-content">
-                </div>
-            </div>
-            <div class="weather-forecast section">
-                <h2>Weather Forecast</h2>
-                <div class="forecast-content">
-                </div>
-            </div>
-            <section class="spotlights section">
-                <h2>Company Spotlights</h2>
-                <div class="spotlight-container">
-                </div>
-            </section>
+        <form action="thankyou.html" method="get">
+            <!-- Applicant's First Name -->
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" title="Enter your first name" required
+                autocomplete="given-name"><br><br>
 
-        </div>
+            <!-- Applicant's Last Name -->
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" title="Enter your last name" required
+                autocomplete="family-name"><br><br>
 
-        <div class="businesses" id="businesses-container"></div>
-    </section>
+            <!-- Applicant's Organizational Title -->
+            <label for="org-title">Organizational Title:</label>
+            <input type="text" id="org-title" name="organization-title" title="Enter your title within the organization"
+                pattern="[A-Za-z-\s]{7,}" autocomplete="organization-title" required><br><br>
+
+            <!-- Applicant's Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" title="Enter your email address" required autocomplete="email"
+                placeholder="example@email.com"><br><br>
+
+            <!-- Applicant's Mobile Phone Number -->
+            <label for="mobile-phone">Mobile Phone:</label>
+            <input type="tel" id="mobile-phone" name="mobile-phone" title="Enter your mobile phone number" required
+                autocomplete="tel"><br><br>
+
+            <!-- Business/Organization Name -->
+            <label for="org-name">Organization Name:</label>
+            <input type="text" id="org-name" name="organization" title="Enter your organization name" required
+                autocomplete="organization"><br><br>
+
+            <!-- Membership Level -->
+            <label for="membership-level">Membership Level:</label>
+            <select id="membership-level" name="membership-level" title="Select your membership level" required>
+                <option value="NP">NP Membership (Non-Profit - No Fee)</option>
+                <option value="Bronze">Bronze Membership</option>
+                <option value="Silver">Silver Membership</option>
+                <option value="Gold">Gold Membership</option>
+            </select><br><br>
+
+            <!-- Business/Organization Description -->
+            <label for="org-description">Organization Description:</label>
+            <textarea id="org-description" name="organization-description"
+                title="Describe your organization"></textarea><br><br>
+
+            <!-- Timestamp (Hidden) -->
+            <input type="hidden" id="timestamp" name="timestamp" value="">
+
+            <!-- Form Submission Button -->
+            <input type="submit" value="Submit Application">
+        </form>
+
+        <script>
+            // Automatically set the current date and time in the hidden timestamp field
+            document.getElementById("timestamp").value = new Date().toISOString();
+        </script>
+
+
+    </form>
+    <div class="form-and-cards">
+
+        <div class="membership-cards">
+            <!-- NP Membership Card -->
+            <div class="card">
+                <h2>NP Membership</h2>
+                <p>Non-Profit - No Fee</p>
+                <a href="#" class="open-modal" data-modal="np-modal">More Info</a>
+            </div>
+
+            <!-- Bronze Membership Card -->
+            <div class="card">
+                <h2>Bronze Membership</h2>
+                <p>Basic Business Benefits</p>
+                <a href="#" class="open-modal" data-modal="bronze-modal">More Info</a>
+            </div>
+
+            <!-- Silver Membership Card -->
+            <div class="card">
+                <h2>Silver Membership</h2>
+                <p>Increased Exposure and Discounts</p>
+                <a href="#" class="open-modal" data-modal="silver-modal">More Info</a>
+            </div>
+
+            <!-- Gold Membership Card -->
+            <div class="card">
+                <h2>Gold Membership</h2>
+                <p>Exclusive Benefits and Promotions</p>
+                <a href="#" class="open-modal" data-modal="gold-modal">More Info</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- NP Membership Modal -->
+    <div id="np-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="np-modal">&times;</span>
+            <h2>NP Membership Benefits</h2>
+            <ul>
+                <li>Free membership for non-profits</li>
+                <li>Access to networking events</li>
+                <li>Discounts on community events</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bronze Membership Modal -->
+    <div id="bronze-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="bronze-modal">&times;</span>
+            <h2>Bronze Membership Benefits</h2>
+            <ul>
+                <li>Access to business resources</li>
+                <li>Event discounts</li>
+                <li>Basic spotlight on website</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Silver Membership Modal -->
+    <div id="silver-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="silver-modal">&times;</span>
+            <h2>Silver Membership Benefits</h2>
+            <ul>
+                <li>Priority spotlight on website</li>
+                <li>Event discounts and training access</li>
+                <li>Increased exposure through social media</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Gold Membership Modal -->
+    <div id="gold-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="gold-modal">&times;</span>
+            <h2>Gold Membership Benefits</h2>
+            <ul>
+                <li>Exclusive promotions and events</li>
+                <li>Featured spotlight on homepage</li>
+                <li>Advertising across multiple channels</li>
+                <li>Priority training access and special discounts</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+
     <footer>
         <div class="footer-info">
             <p>Business Alliance</p>
