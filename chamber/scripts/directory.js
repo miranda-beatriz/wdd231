@@ -169,7 +169,7 @@ function displaySpotlights(members) {
     const spotlightContainer = document.querySelector('.spotlight-container');
 
     if (!spotlightContainer) {
-        console.error('Spotlight container não encontrado!');
+        console.error('Spotlight container not found!');
         return;
     }
 
@@ -258,14 +258,6 @@ function getQueryParams() {
     };
 }
 
-// Populate the thank you page with form data
-const formData = getQueryParams();
-document.getElementById('first-name').textContent = formData.firstName || 'N/A';
-document.getElementById('last-name').textContent = formData.lastName || 'N/A';
-document.getElementById('email').textContent = formData.email || 'N/A';
-document.getElementById('mobile-phone').textContent = formData.mobilePhone || 'N/A';
-document.getElementById('organization').textContent = formData.organization || 'N/A';
-document.getElementById('timestamp').textContent = formData.timestamp || 'N/A';
 
 document.addEventListener('DOMContentLoaded', function () {
     const modalLinks = document.querySelectorAll('.open-modal');
@@ -347,4 +339,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
