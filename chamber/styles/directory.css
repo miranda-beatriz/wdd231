@@ -370,6 +370,82 @@ footer a:hover {
     margin-top: 0;
 }
 
+/* Sidebar styles */
+.sidebar {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.sidebar h2,
+.sidebar h3 {
+    font-size: 1.5em;
+    color: #009C3B;
+    /* A color inspired by the Brazilian flag */
+}
+
+.sidebar p,
+.sidebar ul {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #0057e7;
+    /* Blue for link color */
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+
+/* Main content styles */
+main {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Photo gallery grid */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo-gallery figure {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.photo-gallery img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-gallery figcaption {
+    padding: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
 
 @media (max-width: 768px) {
 
@@ -427,4 +503,20 @@ footer a:hover {
         padding: 8px 15px;
     }
 
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+        /* Sidebar goes below the main content */
+    }
+
+    main {
+        order: 1;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
 }
