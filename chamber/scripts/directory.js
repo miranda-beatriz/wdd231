@@ -341,3 +341,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// Função para calcular a diferença de dias entre duas datas
+function calculateDaysBetween(lastVisit, currentVisit) {
+    const oneDay = 24 * 60 * 60 * 1000; // milissegundos em um dia
+    return Math.floor((currentVisit - lastVisit) / oneDay);
+}
+
+// Obtém a data atual
+const now = Date.now();
+
+// Verifica se há uma data de última visita armazenada no localStorage
+const lastVisit = localStorage.getItem('lastVisit');
+
+const messageElement = document.getElementById('visitMessage');
+
+if (lastVisit) {
+    // Se houver uma data de última visita, calcula a diferença em dias
+    const lastVisitTime = parseInt(lastVisit, 10);
+    const daysBetween = calculateDaysBetween(lastVisitTime, now);
+
+    if (daysBetween < 1) {
+        // Se o tempo entre as visitas for menos de um dia
+        messageElement.textContent = "Back so soon! Awesome!";
+    } else if (daysBetween === 1) {
+        // Se a última visita foi exatamente um dia atrás
+        messageElement.textContent = "You last visited 1 day ago.";
+    } else {
+        // Se a última visita foi há mais de um dia
+        messageElement.textContent = `You last visited ${daysBetween} days ago.`;
+    }
+} else {
+    // Se for a primeira visita
+    messageElement.textContent = "Welcome! Let us know if you have any questions.";
+}
+
+// Armazena a data atual como a última visita
+localStorage.setItem('lastVisit', now);
