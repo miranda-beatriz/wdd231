@@ -1,7 +1,12 @@
+// Função para alternar o menu mobile
 function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
-    mobileMenu.classList.toggle('open');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('open');
+    }
 }
+
+// Função para atualizar ano atual e última modificação
 document.addEventListener("DOMContentLoaded", function () {
     let yearSpan = document.getElementById('currentyear');
     if (yearSpan) {
@@ -24,9 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Função para buscar membros de um arquivo JSON
 async function fetchMembers() {
     try {
-        const response = await fetch('chamber\data\members.json');
+        const response = await fetch('chamber/data/members.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -37,135 +43,50 @@ async function fetchMembers() {
     }
 }
 
+// Função para exibir membros na tela
 function displayMembers(members) {
     const container = document.getElementById('businesses-container');
-    container.innerHTML = '';
-
-    members.forEach(member => {
-        const card = document.createElement('div');
-        card.classList.add('business-card');
-        card.innerHTML = `
-            <img src="${member.image}" alt="${member.name} logo" class="business-logo" />
-            <h3>${member.name}</h3>
-            <p>Address: ${member.address}</p>
-            <p>Phone: ${member.phone}</p>
-            <p>Website: <a href="${member.website}" target="_blank">${member.website}</a></p>
-            <p>Industry: ${member.additional_info.industry}</p>
-            <p>Founded: ${member.additional_info.founded}</p>
-            <p>Employees: ${member.additional_info.employees}</p>
-        `;
-        container.appendChild(card);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", fetchMembers);
-
-async function loadBusinesses() {
-    try {
-        const response = await fetch('data/members.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const businesses = await response.json();
-        const container = document.getElementById('businesses-container');
+    if (container) {
         container.innerHTML = '';
-
-        businesses.forEach(business => {
+        members.forEach(member => {
             const card = document.createElement('div');
             card.classList.add('business-card');
             card.innerHTML = `
-                <h3>${business.name}</h3>
-                <p>Address: ${business.address}</p>
-                <p>Phone: ${business.phone}</p>
-                <p>Website: <a href="${business.website}" target="_blank">${business.website}</a></p>
-                <img src="${business.image}" alt="${business.name} logo" style="width:100px;height:auto;">
+                <img src="${member.image}" alt="${member.name} logo" class="business-logo" />
+                <h3>${member.name}</h3>
+                <p>Address: ${member.address}</p>
+                <p>Phone: ${member.phone}</p>
+                <p>Website: <a href="${member.website}" target="_blank">${member.website}</a></p>
+                <p>Industry: ${member.additional_info.industry}</p>
+                <p>Founded: ${member.additional_info.founded}</p>
+                <p>Employees: ${member.additional_info.employees}</p>
             `;
             container.appendChild(card);
         });
-    } catch (error) {
-        console.error('Error loading businesses:', error);
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadBusinesses);
-
+// Função para alternar entre visualizações (grid/lista)
 function toggleView(viewType) {
     const container = document.getElementById('businesses-container');
-    if (viewType === 'grid') {
-        container.classList.add('grid');
-        container.classList.remove('list');
-    } else {
-        container.classList.add('list');
-        container.classList.remove('grid');
+    if (container) {
+        container.classList.toggle('grid', viewType === 'grid');
+        container.classList.toggle('list', viewType === 'list');
     }
 }
 
 document.getElementById('grid-view').addEventListener('click', () => toggleView('grid'));
 document.getElementById('list-view').addEventListener('click', () => toggleView('list'));
 
-document.addEventListener("DOMContentLoaded", fetchMembers);
-
-
+// Carregar membros ao carregar a página
 document.addEventListener("DOMContentLoaded", function () {
-    const apiKey = 'e62bbb7db57fb5b140460e410f1362a7';
-    const city = 'Mogi das Cruzes';
-    const units = 'metric';
-
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
-
-    fetch(weatherUrl)
-        .then(response => response.json())
-        .then(data => {
-            const weatherContent = document.querySelector('.weather-content');
-            const temperature = data.main.temp;
-            const description = data.weather[0].description;
-            const highTemp = data.main.temp_max;
-            const lowTemp = data.main.temp_min;
-            const humidity = data.main.humidity;
-            const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
-            const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
-
-            weatherContent.innerHTML = `
-                <p>Current temperature: ${temperature}°C</p>
-                <p>${description}</p>
-                <p>High: ${highTemp}°C</p>
-                <p>Low: ${lowTemp}°C</p>
-                <p>Humidity: ${humidity}%</p>
-                <p>Sunrise: ${sunrise}</p>
-                <p>Sunset: ${sunset}</p>
-            `;
-        })
-        .catch(error => {
-            console.error('Error fetching current weather:', error);
-        });
-
-    fetch(forecastUrl)
-        .then(response => response.json())
-        .then(data => {
-            const forecastContent = document.querySelector('.forecast-content');
-            forecastContent.innerHTML = '';
-
-            for (let i = 8; i < 32; i += 8) {
-                const forecastDay = data.list[i];
-                const date = new Date(forecastDay.dt * 1000).toLocaleDateString();
-                const temp = forecastDay.main.temp;
-
-                forecastContent.innerHTML += `<p>${date}: ${temp}°C</p>`;
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching forecast data:', error);
-        });
+    fetchMembers(); // Apenas uma chamada para evitar duplicação
 });
 
-
-
+// Função para exibir spotlights de membros Gold/Silver
 function displaySpotlights(members) {
     const qualifiedMembers = members.filter(member => member.membership_level === 2 || member.membership_level === 3);
-
     const randomMembers = qualifiedMembers.sort(() => 0.5 - Math.random()).slice(0, 3);
-
     const spotlightContainer = document.querySelector('.spotlight-container');
 
     if (!spotlightContainer) {
@@ -189,81 +110,13 @@ function displaySpotlights(members) {
     });
 }
 
-
-function displayMembers(members) {
-    const container = document.getElementById('businesses-container');
-    container.innerHTML = '';
-
-    members.forEach(member => {
-        const card = document.createElement('div');
-        card.classList.add('business-card');
-        card.innerHTML = `
-            <img src="${member.image}" alt="${member.name} logo" class="business-logo" />
-            <h3>${member.name}</h3>
-            <p>Address: ${member.address}</p>
-            <p>Phone: ${member.phone}</p>
-            <p>Website: <a href="${member.website}" target="_blank">${member.website}</a></p>
-            <p>Industry: ${member.additional_info.industry}</p>
-            <p>Founded: ${member.additional_info.founded}</p>
-            <p>Employees: ${member.additional_info.employees}</p>
-        `;
-        container.appendChild(card);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", fetchMembers);
-
-// Function to open modals and manage focus
-document.querySelectorAll('.open-modal').forEach(item => {
-    item.addEventListener('click', function (e) {
-        e.preventDefault();
-        let modalId = this.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        modal.style.display = "block";
-        modal.setAttribute('aria-hidden', 'false');
-        modal.querySelector('.close').focus();  // Focus the close button for accessibility
-    });
-});
-
-// Function to close modals and restore focus to the triggering element
-document.querySelectorAll('.close').forEach(item => {
-    item.addEventListener('click', function () {
-        let modalId = this.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        modal.style.display = "none";
-        modal.setAttribute('aria-hidden', 'true');
-        document.querySelector(`a[data-modal="${modalId}"]`).focus();  // Return focus to the link that triggered the modal
-    });
-});
-
-// Close the modal when clicking outside of the modal content
-window.onclick = function (event) {
-    document.querySelectorAll('.modal').forEach(modal => {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            modal.setAttribute('aria-hidden', 'true');
-        }
-    });
-};
-
-function getQueryParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return {
-        firstName: urlParams.get('first-name'),
-        lastName: urlParams.get('last-name'),
-        email: urlParams.get('email'),
-        mobilePhone: urlParams.get('mobile-phone'),
-        organization: urlParams.get('organization'),
-        timestamp: urlParams.get('timestamp')
-    };
-}
-
-
+// Função para abrir e fechar modais
 document.addEventListener('DOMContentLoaded', function () {
     const modalLinks = document.querySelectorAll('.open-modal');
     const closeButtons = document.querySelectorAll('.close');
+    const modals = document.querySelectorAll('.modal');
 
-    // Function to open a modal
+    // Função para abrir modal
     modalLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -271,109 +124,110 @@ document.addEventListener('DOMContentLoaded', function () {
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'block';
+                modal.setAttribute('aria-hidden', 'false');
+                modal.querySelector('.close').focus(); // Acessibilidade
             }
         });
     });
 
-    // Function to close a modal
+    // Função para fechar modal
     closeButtons.forEach(button => {
         button.addEventListener('click', function () {
             const modalId = this.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+                document.querySelector(`a[data-modal="${modalId}"]`).focus(); // Retorna o foco
             }
         });
     });
 
-    // Close the modal if the user clicks outside the modal content
+    // Fechar modal ao clicar fora do conteúdo
     window.addEventListener('click', function (e) {
-        const modals = document.querySelectorAll('.modal');
         modals.forEach(modal => {
             if (e.target === modal) {
                 modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
             }
         });
     });
 });
 
+// Função para buscar e exibir clima
 document.addEventListener("DOMContentLoaded", function () {
-    // Get all the "More Info" links
-    const modalLinks = document.querySelectorAll(".open-modal");
+    const apiKey = 'e62bbb7db57fb5b140460e410f1362a7';
+    const city = 'Mogi das Cruzes';
+    const units = 'metric';
 
-    // Get all the modals
-    const modals = document.querySelectorAll(".modal");
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${apiKey}`;
 
-    // Get all close buttons
-    const closeButtons = document.querySelectorAll(".close");
+    fetch(weatherUrl)
+        .then(response => response.json())
+        .then(data => {
+            const weatherContent = document.querySelector('.weather-content');
+            const { temp, temp_max, temp_min, humidity } = data.main;
+            const description = data.weather[0].description;
+            const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+            const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
 
-    // Function to open the modal
-    modalLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            const modalId = this.getAttribute("data-modal");
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "block";
+            if (weatherContent) {
+                weatherContent.innerHTML = `
+                    <p>Current temperature: ${temp}°C</p>
+                    <p>${description}</p>
+                    <p>High: ${temp_max}°C</p>
+                    <p>Low: ${temp_min}°C</p>
+                    <p>Humidity: ${humidity}%</p>
+                    <p>Sunrise: ${sunrise}</p>
+                    <p>Sunset: ${sunset}</p>
+                `;
             }
-        });
-    });
+        })
+        .catch(error => console.error('Error fetching current weather:', error));
 
-    // Function to close the modal
-    closeButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            const modalId = this.getAttribute("data-modal");
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "none";
+    fetch(forecastUrl)
+        .then(response => response.json())
+        .then(data => {
+            const forecastContent = document.querySelector('.forecast-content');
+            if (forecastContent) {
+                forecastContent.innerHTML = '';
+                for (let i = 8; i < 32; i += 8) {
+                    const forecastDay = data.list[i];
+                    const date = new Date(forecastDay.dt * 1000).toLocaleDateString();
+                    const temp = forecastDay.main.temp;
+                    forecastContent.innerHTML += `<p>${date}: ${temp}°C</p>`;
+                }
             }
-        });
-    });
-
-    // Close modal if user clicks outside modal content
-    window.addEventListener("click", function (event) {
-        modals.forEach(function (modal) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    });
+        })
+        .catch(error => console.error('Error fetching forecast data:', error));
 });
 
-
-// Função para calcular a diferença de dias entre duas datas
+// Função para calcular a diferença entre visitas
 function calculateDaysBetween(lastVisit, currentVisit) {
     const oneDay = 24 * 60 * 60 * 1000; // milissegundos em um dia
     return Math.floor((currentVisit - lastVisit) / oneDay);
 }
 
-// Obtém a data atual
-const now = Date.now();
+document.addEventListener("DOMContentLoaded", function () {
+    const now = Date.now();
+    const lastVisit = localStorage.getItem('lastVisit');
+    const messageElement = document.getElementById('visitMessage');
 
-// Verifica se há uma data de última visita armazenada no localStorage
-const lastVisit = localStorage.getItem('lastVisit');
+    if (lastVisit && messageElement) {
+        const lastVisitTime = parseInt(lastVisit, 10);
+        const daysBetween = calculateDaysBetween(lastVisitTime, now);
 
-const messageElement = document.getElementById('visitMessage');
-
-if (lastVisit) {
-    // Se houver uma data de última visita, calcula a diferença em dias
-    const lastVisitTime = parseInt(lastVisit, 10);
-    const daysBetween = calculateDaysBetween(lastVisitTime, now);
-
-    if (daysBetween < 1) {
-        // Se o tempo entre as visitas for menos de um dia
-        messageElement.textContent = "Back so soon! Awesome!";
-    } else if (daysBetween === 1) {
-        // Se a última visita foi exatamente um dia atrás
-        messageElement.textContent = "You last visited 1 day ago.";
-    } else {
-        // Se a última visita foi há mais de um dia
-        messageElement.textContent = `You last visited ${daysBetween} days ago.`;
+        if (daysBetween < 1) {
+            messageElement.textContent = "Back so soon! Awesome!";
+        } else if (daysBetween === 1) {
+            messageElement.textContent = "You last visited 1 day ago.";
+        } else {
+            messageElement.textContent = `You last visited ${daysBetween} days ago.`;
+        }
+    } else if (messageElement) {
+        messageElement.textContent = "Welcome! Let us know if you have any questions.";
     }
-} else {
-    // Se for a primeira visita
-    messageElement.textContent = "Welcome! Let us know if you have any questions.";
-}
 
-// Armazena a data atual como a última visita
-localStorage.setItem('lastVisit', now);
+    localStorage.setItem('lastVisit', now);
+});
