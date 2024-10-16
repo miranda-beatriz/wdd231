@@ -446,7 +446,11 @@ main {
     color: #555;
 }
 
-
+.visit-message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 250px;
+}
 
 @media (max-width: 768px) {
 
