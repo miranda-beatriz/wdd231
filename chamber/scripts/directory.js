@@ -2,9 +2,14 @@
 function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
     if (mobileMenu) {
-        mobileMenu.classList.toggle('open');
+        mobileMenu.classList.toggle('open') 
+            hamburgerButton.textContent = 'X';
+        else {
+            hamburgerButton.textContent = '☰';
+        };
     }
 }
+
 
 // Função para atualizar ano atual e última modificação
 document.addEventListener("DOMContentLoaded", function () {
