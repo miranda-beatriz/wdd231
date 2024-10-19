@@ -222,23 +222,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastVisit = localStorage.getItem('lastVisit');
     const messageElement = document.getElementById('visitMessage');
 
-    if (lastVisit && messageElement) {
-        const lastVisitTime = parseInt(lastVisit, 10);
-        const daysBetween = calculateDaysBetween(lastVisitTime, now);
+    if (messageElement) {
+        if (lastVisit) {
+            const lastVisitTime = parseInt(lastVisit, 10);
+            const daysBetween = calculateDaysBetween(lastVisitTime, now);
 
-        if (daysBetween < 1) {
-            messageElement.textContent = "Back so soon! Awesome!";
-        } else if (daysBetween === 1) {
-            messageElement.textContent = "You last visited 1 day ago.";
+            if (daysBetween < 1) {
+                messageElement.textContent = "Back so soon! Awesome!";
+            } else if (daysBetween === 1) {
+                messageElement.textContent = "You last visited 1 day ago.";
+            } else {
+                messageElement.textContent = `You last visited ${daysBetween} days ago.`;
+            }
         } else {
-            messageElement.textContent = `You last visited ${daysBetween} days ago.`;
+            messageElement.textContent = "Welcome! Let us know if you have any questions.";
         }
-    } else if (messageElement) {
-        messageElement.textContent = "Welcome! Let us know if you have any questions.";
-    }
 
-    localStorage.setItem('lastVisit', now);
+        // Armazenar a data da visita atual
+        localStorage.setItem('lastVisit', now);
+    } else {
+        console.error('Elemento com o id "visitMessage" não encontrado.');
+    }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     const lazyImages = document.querySelectorAll("img.lazy");
 

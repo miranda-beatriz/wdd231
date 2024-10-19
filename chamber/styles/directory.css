@@ -471,6 +471,32 @@ main {
     width: 250px;
 }
 
+@media (min-width:769px) {
+
+    /* Estiliza as imagens da galeria */
+    .photo-gallery figure {
+        display: inline-block;
+        margin: 20px;
+    }
+
+    .photo-gallery img {
+        width: auto;
+        /* Defina um tamanho adequado para as suas imagens */
+        height: auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        /* Adiciona bordas arredondadas */
+    }
+
+    /* Efeito de hover */
+    .photo-gallery img:hover {
+        transform: scale(1.05);
+        /* Aumenta a imagem em 5% */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        /* Adiciona uma sombra ao redor da imagem */
+    }
+
+}
 
 @media (max-width: 768px) {
 
