@@ -370,11 +370,9 @@ footer a:hover {
     margin-top: 0;
 }
 
-/* Sidebar styles */
 main {
     display: grid;
     grid-template-columns: 300px 1fr;
-    /* Sidebar de 300px e o restante para o conteúdo principal */
     gap: 20px;
     background-color: #ffffff;
     padding: 20px;
@@ -384,10 +382,8 @@ main {
 .grid-container {
     display: grid;
     grid-template-columns: 300px 1fr;
-    /* Sidebar de 300px à esquerda e o conteúdo à direita */
     gap: 20px;
     height: 100vh;
-    /* Full-height layout */
 }
 
 .sidebar {
@@ -432,13 +428,10 @@ main {
 }
 
 
-/* Main content styles */
 
-/* Photo gallery grid */
 .photo-gallery {
     display: grid;
     grid-template-columns: 1fr;
-    /* As imagens ocupam a largura restante */
     gap: 20px;
 }
 
@@ -454,7 +447,6 @@ main {
 
 .photo-gallery img {
     max-width: 40%;
-    /* Ajusta a imagem para ocupar a largura total do bloco */
     height: auto;
     display: block;
 }
@@ -473,7 +465,6 @@ main {
 
 @media (min-width:769px) {
 
-    /* Estiliza as imagens da galeria */
     .photo-gallery figure {
         display: inline-block;
         margin: 20px;
@@ -481,19 +472,14 @@ main {
 
     .photo-gallery img {
         width: auto;
-        /* Defina um tamanho adequado para as suas imagens */
         height: auto;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border-radius: 10px;
-        /* Adiciona bordas arredondadas */
     }
 
-    /* Efeito de hover */
     .photo-gallery img:hover {
         transform: scale(1.05);
-        /* Aumenta a imagem em 5% */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        /* Adiciona uma sombra ao redor da imagem */
     }
 
 }
@@ -556,16 +542,13 @@ main {
 
     .grid-container {
         grid-template-columns: 1fr;
-        /* Passa a ter apenas uma coluna */
     }
 
     main {
         grid-template-columns: 1fr;
-        /* Faz o layout ocupar uma coluna só */
     }
 
     .photo-gallery img {
         max-width: 100%;
-        /* As imagens ocupam 100% da largura no mobile */
     }
 }

@@ -1,4 +1,3 @@
-// Função para alternar o menu mobile
 function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
     const hamburgerButton = document.querySelector('.mobile-menu-icon'); // certifique-se de que o botão do hamburguer está sendo selecionado
@@ -14,7 +13,6 @@ function toggleMenu() {
 }
 
 
-// Função para atualizar ano atual e última modificação
 document.addEventListener("DOMContentLoaded", function () {
     let yearSpan = document.getElementById('currentyear');
     if (yearSpan) {
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Função para buscar membros de um arquivo JSON
 async function fetchMembers() {
     try {
         const response = await fetch('chamber/data/members.json');
@@ -51,7 +48,6 @@ async function fetchMembers() {
     }
 }
 
-// Função para exibir membros na tela
 function displayMembers(members) {
     const container = document.getElementById('businesses-container');
     if (container) {
@@ -74,7 +70,6 @@ function displayMembers(members) {
     }
 }
 
-// Função para alternar entre visualizações (grid/lista)
 function toggleView(viewType) {
     const container = document.getElementById('businesses-container');
     if (container) {
@@ -86,12 +81,10 @@ function toggleView(viewType) {
 document.getElementById('grid-view').addEventListener('click', () => toggleView('grid'));
 document.getElementById('list-view').addEventListener('click', () => toggleView('list'));
 
-// Carregar membros ao carregar a página
 document.addEventListener("DOMContentLoaded", function () {
-    fetchMembers(); // Apenas uma chamada para evitar duplicação
+    fetchMembers();
 });
 
-// Função para exibir spotlights de membros Gold/Silver
 function displaySpotlights(members) {
     const qualifiedMembers = members.filter(member => member.membership_level === 2 || member.membership_level === 3);
     const randomMembers = qualifiedMembers.sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -118,13 +111,11 @@ function displaySpotlights(members) {
     });
 }
 
-// Função para abrir e fechar modais
 document.addEventListener('DOMContentLoaded', function () {
     const modalLinks = document.querySelectorAll('.open-modal');
     const closeButtons = document.querySelectorAll('.close');
     const modals = document.querySelectorAll('.modal');
 
-    // Função para abrir modal
     modalLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -133,12 +124,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (modal) {
                 modal.style.display = 'block';
                 modal.setAttribute('aria-hidden', 'false');
-                modal.querySelector('.close').focus(); // Acessibilidade
+                modal.querySelector('.close').focus();
             }
         });
     });
 
-    // Função para fechar modal
     closeButtons.forEach(button => {
         button.addEventListener('click', function () {
             const modalId = this.getAttribute('data-modal');
@@ -151,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Fechar modal ao clicar fora do conteúdo
     window.addEventListener('click', function (e) {
         modals.forEach(modal => {
             if (e.target === modal) {
@@ -162,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Função para buscar e exibir clima
 document.addEventListener("DOMContentLoaded", function () {
     const apiKey = 'e62bbb7db57fb5b140460e410f1362a7';
     const city = 'Mogi das Cruzes';
@@ -211,9 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error fetching forecast data:', error));
 });
 
-// Função para calcular a diferença entre visitas
 function calculateDaysBetween(lastVisit, currentVisit) {
-    const oneDay = 24 * 60 * 60 * 1000; // milissegundos em um dia
+    const oneDay = 24 * 60 * 60 * 1000;
     return Math.floor((currentVisit - lastVisit) / oneDay);
 }
 
@@ -238,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
             messageElement.textContent = "Welcome! Let us know if you have any questions.";
         }
 
-        // Armazenar a data da visita atual
         localStorage.setItem('lastVisit', now);
     } else {
         console.error('Elemento com o id "visitMessage" não encontrado.');
