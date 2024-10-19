@@ -1,12 +1,15 @@
 // Função para alternar o menu mobile
 function toggleMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('open') 
-            hamburgerButton.textContent = 'X';
-        else {
-            hamburgerButton.textContent = '☰';
-        };
+    const hamburgerButton = document.querySelector('.mobile-menu-icon'); // certifique-se de que o botão do hamburguer está sendo selecionado
+    if (mobileMenu && hamburgerButton) {
+        mobileMenu.classList.toggle('open');
+
+        if (mobileMenu.classList.contains('open')) {
+            hamburgerButton.textContent = 'X';  // Mostra 'X' quando o menu estiver aberto
+        } else {
+            hamburgerButton.textContent = '☰';  // Mostra '☰' quando o menu estiver fechado
+        }
     }
 }
 
@@ -235,4 +238,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     localStorage.setItem('lastVisit', now);
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll("img.lazy");
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove("lazy");
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach((image) => {
+        imageObserver.observe(image);
+    });
 });
