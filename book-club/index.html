@@ -8,7 +8,7 @@
         content="We are a group of book lovers who use the internet to unite with more readers and talk about what we love the most: books. ">
     <title>The Reading Room Book Club.</title>
     <link rel="stylesheet" href="styles/book-club.css">
-    <script src="scripts/book-club.js" defer></script>
+    <script src="data/book-club.js" defer></script>
     <link rel="icon" href="book-club.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,25 +26,45 @@
         <div class="logo">
             <img src="images/logo.jpg" alt="The reading room logo">
         </div>
+        <nav class="flex-nav">
+            <nav class="navigation">
 
-        <nav class="nav-container">
-            <ul class="desktop-menu">
-                <li><a href="">Home</a></li>
-                <li><a href="">Directory</a></li>
-                <li><a href="">Join</a></li>
-                <li><a href="">Discover</a></li>
-            </ul>
-            <div class="mobile-menu-icon" onclick="toggleMenu()">☰</div>
-            <ul id="hamburguer" class="mobile-menu">
-                <li><a href="">Home</a></li>
-                <li><a href="">Directory</a></li>
-                <li><a href="">Join</a></li>
-                <li><a href="">Discover</a></li>
-            </ul>
-
+                <button class="hamburger" onclick="toggleMenu()">☰</button>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Why join the club? </a></li>
+                    <li><a href="#">What can books do for me? </a></li>
+                </ul>
+            </nav>
         </nav>
     </header>
 
+
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="https://github.com/miranda-beatriz/wdd231/blob/main/book-club/images/pexels-technobulka-2908984.jpg?raw=true"
+                    alt="Library">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-info">
+            <p>The Reading Room</p>
+            <p>Email: reading_room@gmail.com</p>
+            <p>Phone: (223) 555-2300</p>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.youtube.com/"><img src="images/youtube-logo.avif" alt="YouTube"></a>
+            <a href="https://twitter.com/?lang=pt-br"><img src="images/xLogo.png" alt="Twitter"></a>
+            <a href="https://linkedin.com/"><img src="images/linkedin-logo.webp" alt="LinkedIn"></a>
+        </div>
+        <div class="footer-credits">
+            <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span class="location">Brasil</span>
+            </p>
+            <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
+        </div>
+    </footer>
 
 </body>
 

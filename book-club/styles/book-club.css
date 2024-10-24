@@ -39,66 +39,126 @@ header .logo img {
     max-width: 150px;
 }
 
-nav ul {
+.flex-nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+.flex-nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-nav ul li a {
-    font-size: 16px;
-    font-weight: bold;
+.flex-nav li {
+    margin: 0 15px;
+}
+
+.flex-nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+}
+
+.flex-nav a:hover {
+    background-color: #575757;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 18px;
+}
+
+.navigation ul li a.active {
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+}
+
+footer {
+    background-color: var(--dark-brown);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     color: white;
 }
 
-.mobile-menu-icon,
-.mobile-menu {
-    display: none;
+footer .footer-info,
+footer .footer-credits {
+    font-size: 14px;
+}
+
+footer .footer-social img {
+    width: 55px;
+    margin: 0 10px;
+}
+
+footer a {
+    color: var(--gold-yellow);
+}
+
+footer a:hover {
+    color: white;
+}
+
+.hero {
+    padding: 20px 20px;
+    text-align: center;
+}
+
+.hero-image {
+    position: relative;
+    padding: 30px;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-    .mobile-menu-icon {
+
+    .flex-nav ul {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+    .flex-nav ul.show {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .flex-nav li {
+        list-style: none;
+    }
+
+    .flex-nav a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 15px;
+    }
+
+    .hamburger {
         display: block;
         font-size: 24px;
-        color: white;
         cursor: pointer;
-        position: relative;
-        z-index: 9999;
-    }
-
-    desktop-menu {
-        display: none
-    }
-
-    .mobile-menu {
-        display: none;
-        list-style: none;
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        padding: 10px;
-        gap: 10px;
-        z-index: 9998;
-    }
-
-    .mobile-menu.open {
-        display: flex;
-    }
-
-    .mobile-menu li {
-        margin: 10px 0;
-    }
-
-    .mobile-menu a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-    }
-
-    .mobile-menu a:hover {
-        text-decoration: underline;
     }
 
 }
