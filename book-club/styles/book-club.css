@@ -219,4 +219,14 @@ button:hover {
         cursor: pointer;
     }
 
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
 }
