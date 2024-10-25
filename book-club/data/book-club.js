@@ -40,3 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+function saveData(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    localStorage.setItem('phone', phone);
+
+    window.location.href = 'thank-you.html';
+}
+
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', saveData);

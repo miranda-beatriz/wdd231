@@ -38,40 +38,27 @@
             </nav>
         </nav>
     </header>
+    <h1>Obrigado por enviar seus dados!</h1>
+    <p>Os seus dados foram recebidos com sucesso.</p>
 
+    <h2>Seus dados:</h2>
+    <p><strong>Nome:</strong> <span id="nomeConfirmado"></span></p>
+    <p><strong>E-mail:</strong> <span id="emailConfirmado"></span></p>
+    <p><strong>Telefone:</strong> <span id="telefoneConfirmado"></span></p>
 
-    <main>
-        <section class="hero">
-            <div class="hero-image">
-                <img src="https://github.com/miranda-beatriz/wdd231/blob/main/book-club/images/pexels-technobulka-2908984.jpg?raw=true"
-                    alt="Library">
-            </div>
-        </section>
-        <section class="explanation">
-            <h1>What expect for the club?</h1>
-            <p> The club meetings happens once a week on zoom and <br>
-                fjdifjsdipfjsipjfipsdjfisjgipsjdgipjsdipgjspjgisfjigsjpgfsjividjvip ienfisjfoisjdvio sisijfios <br>
-                fdjfsdipjfipdsjfpsd sdijfispdjfpsdijfs oprjpijtriejtw gdsigjvisp kmapiefjwiefjv iwrjgiprjgp </p>
-        </section>
-        <section class="form">
-            <h1>Be part!</h1>
-            <form id="contactForm">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br><br>
+    <script>
+        function mostrarDados() {
+            const nome = localStorage.getItem('nome');
+            const email = localStorage.getItem('email');
+            const telefone = localStorage.getItem('telefone');
 
-                <label for="email">E-mail:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+            document.getElementById('nomeConfirmado').textContent = nome;
+            document.getElementById('emailConfirmado').textContent = email;
+            document.getElementById('telefoneConfirmado').textContent = telefone;
+        }
 
-                <label for="phone">Phone:</label><br>
-                <input type="phone" id="phone" name="phone" required><br><br>
-
-                <button type="submit">Join</button>
-            </form>
-            <div id="storedData"></div>
-
-
-        </section>
-    </main>
+        window.onload = mostrarDados;
+    </script>
     <footer>
         <div class="footer-info">
             <p>The Reading Room</p>
