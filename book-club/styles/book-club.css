@@ -130,13 +130,62 @@ footer a:hover {
     margin: 0 auto;
 }
 
-.explanation {
-    background-color: #f8f8e6;
-    width: 400px;
-    height: 400px;
-    padding: 20px;
-    margin: 100px auto;
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+.explanation,
+.form {
+    padding: 40px;
+    background-color: #f8f8e6;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.explanation h1,
+.form h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phone"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #45301c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8a6f56;
+}
+
 
 
 @media (max-width: 768px) {
