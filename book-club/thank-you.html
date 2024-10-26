@@ -40,13 +40,35 @@
             </nav>
         </nav>
     </header>
-    <h1>THanks to join in the Reading Rom Family!</h1>
-    <p>Os seus dados foram recebidos com sucesso.</p>
+    <div class="wrapper">
+        <section class="confirmation">
+            <h1>Welcome <span id="name"></span> to the Reading Room Family!</h1>
+            <p>Os seus dados foram recebidos com sucesso.</p>
 
-    <h2>Seus dados:</h2>
-    <p><strong>Nome:</strong> <span id="nomeConfirmado"></span></p>
-    <p><strong>E-mail:</strong> <span id="emailConfirmado"></span></p>
-    <p><strong>Telefone:</strong> <span id="telefoneConfirmado"></span></p>
+            <h2>Seus dados:</h2>
+            <p><strong>Nome:</strong> <span id="nomeConfirmado"></span></p>
+            <p><strong>E-mail:</strong> <span id="emailConfirmado"></span></p>
+            <p><strong>Telefone:</strong> <span id="telefoneConfirmado"></span></p>
+        </section>
+        <footer>
+            <div class="footer-info">
+                <p>The Reading Room</p>
+                <p>Email: reading_room@gmail.com</p>
+                <p>Phone: (223) 555-2300</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.youtube.com/"><img src="images/youtube-logo.avif" alt="YouTube"></a>
+                <a href="https://twitter.com/?lang=pt-br"><img src="images/xLogo.png" alt="Twitter"></a>
+                <a href="https://linkedin.com/"><img src="images/linkedin-logo.webp" alt="LinkedIn"></a>
+            </div>
+            <div class="footer-credits">
+                <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span
+                        class="location">Brasil</span>
+                </p>
+                <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
+            </div>
+        </footer>
+    </div>
 
     <script>
         function mostrarDados() {
@@ -58,26 +80,12 @@
             document.getElementById('emailConfirmado').textContent = email;
             document.getElementById('telefoneConfirmado').textContent = telefone;
         }
-
         window.onload = mostrarDados;
+        const nome = localStorage.getItem('name');
+        if (nome) {
+            document.getElementById('name').textContent = nome;
+        }
     </script>
-    <footer>
-        <div class="footer-info">
-            <p>The Reading Room</p>
-            <p>Email: reading_room@gmail.com</p>
-            <p>Phone: (223) 555-2300</p>
-        </div>
-        <div class="footer-social">
-            <a href="https://www.youtube.com/"><img src="images/youtube-logo.avif" alt="YouTube"></a>
-            <a href="https://twitter.com/?lang=pt-br"><img src="images/xLogo.png" alt="Twitter"></a>
-            <a href="https://linkedin.com/"><img src="images/linkedin-logo.webp" alt="LinkedIn"></a>
-        </div>
-        <div class="footer-credits">
-            <p>&copy; <span id="currentyear"></span> <span>Beatriz Miranda</span> <span class="location">Brasil</span>
-            </p>
-            <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
-        </div>
-    </footer>
     <script src="data/book-club.js"></script>
 
 </body>

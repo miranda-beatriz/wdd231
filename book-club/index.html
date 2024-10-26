@@ -60,7 +60,7 @@
 
             <section class="form">
                 <h1>Be part!</h1>
-                <form id="contactForm">
+                <form id="contactForm" onsubmit="saveName()">
                     <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" required><br><br>
 
@@ -75,6 +75,12 @@
                 <div id="storedData"></div>
             </section>
         </div>
+        <script>
+            function saveName() {
+                const nome = document.getElementById('name').value;
+                sessionStorage.setItem('name', nome);
+            }
+        </script>
     </main>
     <footer>
         <div class="footer-info">
