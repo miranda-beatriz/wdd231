@@ -202,7 +202,7 @@ button:hover {
 .confirmation p,
 .confirmation h2 {
     padding-top: 100px;
-    padding-left: 300px;
+    padding-left: 100px;
 }
 
 @media (max-width: 768px) {
