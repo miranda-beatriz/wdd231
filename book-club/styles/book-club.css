@@ -16,7 +16,6 @@ h2 {
 }
 
 p {
-    color: #45301c;
     font-family: "Lato", Arial;
 }
 
@@ -89,12 +88,18 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.footer-info,
+.footer-credits {
+    font-size: 18px;
     color: white;
 }
 
-footer .footer-info,
-footer .footer-credits {
+.footer-social {
     font-size: 14px;
+    color: white;
+
 }
 
 footer .footer-social img {
@@ -155,6 +160,10 @@ footer a:hover {
     font-size: 30px;
     margin-bottom: 15px;
     color: #333;
+}
+
+.explanation p {
+    font-size: 20px;
 }
 
 label {
@@ -294,7 +303,6 @@ button:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    /* Isso permite que os cards se ajustem em múltiplas linhas se o espaço for pequeno */
     gap: 20px;
     padding: 20px;
 }

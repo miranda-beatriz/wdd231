@@ -1,5 +1,4 @@
 
-// começou aqui! mudar para dias que o clube se reune e os planos para comprar o livro
 async function fetchMeetings() {
     try {
         const response = await fetch('data/meetings.json');
@@ -16,7 +15,7 @@ async function fetchMeetings() {
 function displayMeetings(meetings) {
     const container = document.getElementById('businesses-container');
     if (container) {
-        container.innerHTML = ''; // Limpa o container antes de exibir os dados
+        container.innerHTML = '';
         meetings.forEach(meeting => {
             const card = document.createElement('div');
             card.classList.add('meeting-card');
@@ -30,5 +29,4 @@ function displayMeetings(meetings) {
     }
 }
 
-// Chama a função para buscar e exibir as reuniões ao carregar a página
 document.addEventListener("DOMContentLoaded", fetchMeetings);
