@@ -9,6 +9,7 @@
     <title>The Reading Room Book Club.</title>
     <link rel="stylesheet" href="styles/book-club.css">
     <script src="scripts/book-club.js" defer></script>
+    <script src="scripts/modal.js" defer></script>
     <link rel="icon" href="book-club.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +41,60 @@
             </nav>
         </nav>
     </header>
+    <section class="welcome">
+        <h1>Benefits of Reading Books</h1>
+        <p>Explore the numerous benefits of reading and how it can improve your life!</p>
+    </section>
+    <section class="hero">
+        <div class="hero-image">
+            <img src="images\pexels-leah-newhouse-50725-1666320.jpg" alt="books in a table">
+        </div>
+    </section>
+    <main class="main-reading">
+        <section class="benefit-reading" onclick="openModal('modal1')">
+            <img src="images\pexels-nietjuh-1906437.jpg" alt="Books with a flower and glasses">
+            <h2>Improves Mental Health</h2>
+            <p>Reading helps to reduce stress and improve mental well-being.</p>
+        </section>
 
+        <section class="benefit-reading" onclick="openModal('modal2')">
+            <img src="images\pexels-suzyhazelwood-1526049.jpg" alt="book with a cup off coffee">
+            <h2>Expands Vocabulary</h2>
+            <p>Reading introduces new words, improving language skills.</p>
+        </section>
+
+        <section class="benefit-reading" onclick="openModal('modal3')">
+            <img src="images\pexels-skitterphoto-442420.jpg" alt="library">
+            <h2>Increases Knowledge</h2>
+            <p>Books are a vast source of information on countless topics.</p>
+        </section>
+    </main>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Improves Mental Health</h2>
+            <p>Regular reading can decrease stress levels, improve sleep, and help combat depression and anxiety.</p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Expands Vocabulary</h2>
+            <p>Each book is filled with unique words that enhance your vocabulary and improve your overall communication
+                skills.</p>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Increases Knowledge</h2>
+            <p>Books provide insights into history, science, and a variety of topics, broadening your understanding of
+                the world.</p>
+        </div>
+    </div>
     <footer>
         <div class="footer-info">
             <p>The Reading Room</p>
@@ -59,6 +113,8 @@
         </div>
     </footer>
     <script src="scripts/book-club.js"></script>
+    <script src="scripts/modal.js"></script>
+
 
 </body>
 
