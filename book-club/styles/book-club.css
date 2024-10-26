@@ -205,6 +205,92 @@ button:hover {
     padding-left: 100px;
 }
 
+.welcome {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f0e6d2;
+}
+
+.welcome h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+}
+
+#benefits {
+    width: 80%;
+    max-width: 900px;
+    background-color: #f0e6d2;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    text-align: center;
+    margin-left: 500px;
+}
+
+#benefits h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+#benefits ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#benefits li {
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+    color: #555;
+}
+
+#benefits li strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.schedule {
+    width: 90%;
+    max-width: 1200px;
+    padding: 2.5rem 0;
+    text-align: center;
+    margin-left: 330px;
+    margin-top: 100px;
+}
+
+.schedule h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+#businesses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    background: linear-gradient(135deg, #fdfdfd, #f9f3e6);
+    width: 100%;
+    padding: 4rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1) inset;
+    border: 2px solid #ffd700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 0.8rem;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 8px rgba(255, 215, 0, 0.5) inset;
+}
+
+
 @media (max-width: 768px) {
 
     .flex-nav ul {
@@ -257,6 +343,18 @@ button:hover {
     .confirmation h2 {
         padding-top: 100px;
         padding-left: 80px;
+    }
+
+    #benefits,
+    .schedule {
+        padding: 1.5rem;
+        margin-left: 60px;
+
+    }
+
+    #businesses-container {
+        flex-direction: column;
+        align-items: center;
     }
 
 }

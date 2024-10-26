@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Alice Smith",
+        "day": "Monday",
+        "time": "7:00 PM"
+    },
+    {
+        "name": "Julian Smith",
+        "day": "Tuesday",
+        "time": "10:00 AM"
+    },
+    {
+        "name": "John Doe",
+        "day": "Wednesday",
+        "time": "6:00 PM"
+    },
+    {
+        "name": "Lucy Gray",
+        "day": "Thursday",
+        "time": "9:00 AM"
+    },
+    {
+        "name": "Emma Johnson",
+        "day": "Friday",
+        "time": "5:00 PM"
+    }
+]

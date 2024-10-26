@@ -8,7 +8,7 @@
         content="We are a group of book lovers who use the internet to unite with more readers and talk about what we love the most: books. ">
     <title>The Reading Room Book Club.</title>
     <link rel="stylesheet" href="styles/book-club.css">
-    <script src="data/book-club.js" defer></script>
+    <script src="scripts/meetings.js" defer></script>
     <link rel="icon" href="book-club.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,12 +41,32 @@
         </nav>
     </header>
     <main>
+        <section class="welcome">
+            <h1>Welcome to The Reading Room</h1>
+            <p>Discover the benefits of joining a community that loves to read.</p>
+        </section>
         <section class="hero">
             <div class="hero-image">
-                <img src="https://github.com/miranda-beatriz/wdd231/blob/main/book-club/imagespexels-karolina-grabowska-4218709.jpg"
-                    alt="Library">
+                <img src="https://github.com/miranda-beatriz/wdd231/blob/main/book-club/images/pexels-karolina-grabowska-4218709.jpg?raw=true"
+                    alt="books in a garden">
             </div>
         </section>
+        <section id="benefits">
+            <h2>Benefits of Joining a Book Club</h2>
+            <ul>
+                <li><strong>Improve Your Reading Habits:</strong> Stay motivated and read more often.</li>
+                <li><strong>Explore New Genres:</strong> Discover books you may never have picked on your own.</li>
+                <li><strong>Engage in Meaningful Discussions:</strong> Deepen your understanding of the book's themes
+                    and perspectives.</li>
+                <li><strong>Build Lasting Friendships:</strong> Connect with people who share your interests.</li>
+            </ul>
+        </section>
+        <section class="schedule">
+            <h2>Meeting Schedule</h2>
+            <div id="businesses-container"></div>
+        </section>
+
+
     </main>
     <footer>
         <div class="footer-info">
@@ -65,7 +85,7 @@
             <p id="lastModified">Last Modified: <span id="last-modified"></span></p>
         </div>
     </footer>
-    <script src="data/book-club.js"></script>
+    <script src="scripts/meetings.js"></script>
 
 </body>
 
