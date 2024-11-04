@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     let yearSpan = document.getElementById('currentyear');
     if (yearSpan) {
